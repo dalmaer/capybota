@@ -3,9 +3,9 @@ name: Run Capybara main.py script
 on:
   schedule:
     # Run at 4:20pm (US Mountain Daylight Time) from March to October
-    - cron: "20 23 * 3-10 *"
+    - cron: "20 22 * 3-10 *"
     # Run at 4:20pm (US Mountain Standard Time) from November to February
-    - cron: "20 0 * 1-2,11-12 *"
+    - cron: "20 23 * 1-2,11-12 *"
 
 jobs:
   build:
