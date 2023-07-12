@@ -21,6 +21,8 @@ def main():
     parser.add_argument('--image', help='Path or URL to the image')
     parser.add_argument(
         '--text', help='Text of the image and the ALT attribute')
+    parser.add_argument('--debug', action='store_true',
+                        help='Enable debug mode')
 
     args = parser.parse_args()
 
@@ -31,21 +33,27 @@ def main():
         # Generate default filename
         current_date = datetime.date.today().strftime('%Y-%m-%d')
         default_filename = f'{current_date}-capybara.jpg'
-        image_path = os.path.join(os.getcwd(), default_filename)
+        img_dir = './images'
+        image_path = os.path.join(img_dir, default_filename)
 
     client = Client()
     profile = client.login(email, password)
-    print('Welcome,', profile.displayName)
+
+    print('Logged in to Bluesky as:', profile.displayName)
+    print('Using image:', image_path)
 
     # Get that capy image data
     capybara_image_data = get_capybara_image(image_path)
-    # print(f'Image data: {capybara_image_data}')
 
-    text = args.text if args.text else 'Don\'t worry, be Cappy!'
+    # Sam doesn't want any text most of the time, so default to blank
+    text = args.text if args.text else ''
 
-    client.send_image(
-        text=text, image=capybara_image_data, image_alt=text
-    )
+    if args.debug:
+        print('Debug mode enabled. Skipping sending image to Bluesky.')
+    else:
+        client.send_image(
+            text=text, image=capybara_image_data, image_alt=text
+        )
 
 
 def get_capybara_image(image_path):
