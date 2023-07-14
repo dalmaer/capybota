@@ -23,7 +23,10 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+          if [ -f python/requirements.txt ]; then pip install -r python/requirements.txt; fi
 
       - name: Run main.py
+        env:
+          BLUESKY_BOT_EMAIL: ${{ secrets.BLUESKY_BOT_EMAIL }}
+          BLUESKY_BOT_PASSWORD: ${{ secrets.BLUESKY_BOT_PASSWORD }}
         run: python python/main.py
