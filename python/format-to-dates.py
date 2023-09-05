@@ -2,6 +2,10 @@ import os
 import argparse
 from datetime import datetime, timedelta
 
+#
+# Example usage: python3 python/format-to-dates.py --start-date 2023-09-06 input-images/
+#
+
 
 def copy_images_with_dates(input_dir, start_date):
     if not os.path.exists(input_dir):
