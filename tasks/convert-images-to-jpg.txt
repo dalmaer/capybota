@@ -1,0 +1,9 @@
+
+First, in a directory with the `input-images` convert to jpg:
+
+% setopt extended_glob
+% mogrify -format jpg ^*.jpg
+
+To see which file extensions are in the directory you can run:
+
+% ls -1 | sed -n 's/.*\(\.[^.]*$\)/\1/p' | sort -u

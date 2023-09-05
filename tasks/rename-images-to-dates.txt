@@ -1,0 +1,13 @@
+Create a python program to help with this task:
+
+Take a directory of images and copy them to be in the format of YYYY-MM-DD-capybara.jpg
+Given the initial start date, the first image should be copied to use that date, and each subsequent image should be copied to use the next day's date.
+
+For example:
+
+Given a directory `images/` with files such as `images/cute-capy.jpg` and `images/funny-capy.jpg`, and an initial start date of 2023-09-05, the program should output `images/2023-09-05-capybara.jpg` and `images/2023-09-06-capybara.jpg`
+
+The command line to do this should be:
+
+% python3 ./format-to-dates.py --start-date 2023-09-05 images/
+
